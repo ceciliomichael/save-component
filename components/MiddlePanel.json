@@ -1,0 +1,6 @@
+{
+  "name": "MiddlePanel",
+  "code": "\"use client\";\n\nimport { Layout } from \"lucide-react\";\n\nexport default function MiddlePanel() {\n  return (\n    <div className=\"h-full w-full bg-white p-4 rounded-lg shadow-sm flex flex-col\">\n      <div className=\"flex items-center gap-2 mb-4\">\n        <Layout className=\"w-5 h-5 text-indigo-600\" />\n        <h2 className=\"font-semibold text-lg\">Middle Panel</h2>\n      </div>\n      \n      <div className=\"flex-1 flex items-center justify-center\">\n        <p className=\"text-gray-500\">Middle panel content (60% width)</p>\n      </div>\n    </div>\n  );\n}",
+  "description": "A middle panel component with a white background, featuring a header with a Layout icon and a title. The content area is centered and takes up the remaining space.",
+  "createdAt": "2025-07-19T13:00:46.325Z"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Card",
+  "code": "function Card({ title, children, footer }) {\n  return (\n    <div className=\"border rounded-lg shadow-sm overflow-hidden\">\n      {title && (\n        <div className=\"px-4 py-3 border-b bg-gray-50\">\n          <h3 className=\"text-lg font-medium\">{title}</h3>\n        </div>\n      )}\n      <div className=\"p-4\">\n        {children}\n      </div>\n      {footer && (\n        <div className=\"px-4 py-3 border-t bg-gray-50\">\n          {footer}\n        </div>\n      )}\n    </div>\n  );\n}",
+  "description": "A flexible card component with optional title and footer.\n\n**Props:**\n- `title`: Optional card title (displayed in header)\n- `children`: Main content of the card\n- `footer`: Optional footer content\n\n**Example:**\n```jsx\n<Card \n  title=\"User Profile\"\n  footer={<Button text=\"Save Changes\" />}\n>\n  <p>This is the card content</p>\n</Card>\n```",
+  "createdAt": "2025-07-19T13:00:58.820Z"
+}

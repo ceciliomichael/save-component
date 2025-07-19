@@ -1,0 +1,6 @@
+{
+  "name": "RightPanel",
+  "code": "\"use client\";\n\nimport { Layers } from \"lucide-react\";\n\nexport default function RightPanel() {\n  return (\n    <div className=\"h-full w-full bg-gray-50 p-4 rounded-lg shadow-sm flex flex-col\">\n      <div className=\"flex items-center gap-2 mb-4\">\n        <Layers className=\"w-5 h-5 text-purple-600\" />\n        <h2 className=\"font-semibold text-lg\">Right Panel</h2>\n      </div>\n      \n      <div className=\"flex-1 flex items-center justify-center\">\n        <p className=\"text-gray-500\">Right panel content (20% width)</p>\n      </div>\n    </div>\n  );\n}",
+  "description": "A right panel component with a very light gray background, featuring a header with a Layers icon and a title. The content area is centered and takes up the remaining space.",
+  "createdAt": "2025-07-19T13:00:55.564Z"
+}

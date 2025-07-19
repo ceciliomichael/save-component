@@ -1,0 +1,6 @@
+{
+  "name": "Button",
+  "code": "function Button({ text, onClick, variant = 'primary' }) {\n  const styles = {\n    primary: 'bg-blue-500 hover:bg-blue-600 text-white',\n    secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800',\n    danger: 'bg-red-500 hover:bg-red-600 text-white'\n  };\n\n  return (\n    <button \n      className={`px-4 py-2 rounded-full ${styles[variant]} transition-colors`}\n      onClick={onClick}\n    >\n      {text}\n    </button>\n  );\n}",
+  "description": "A customizable button component with different variants.\n\n**Props:**\n- `text`: The button text\n- `onClick`: Function to call when button is clicked\n- `variant`: Visual style ('primary', 'secondary', or 'danger')\n\n**Example:**\n```jsx\n<Button \n  text=\"Click Me\" \n  onClick={() => alert('Button clicked!')} \n  variant=\"primary\" \n/>\n```",
+  "createdAt": "2025-07-19T13:00:46.797Z"
+}
