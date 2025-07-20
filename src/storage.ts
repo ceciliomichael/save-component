@@ -79,15 +79,21 @@ export async function loadComponents(names: string[], targetDir: string): Promis
   const loaded: string[] = [];
   const failed: string[] = [];
 
+  // Sanitize the target directory path to handle common formatting errors
+  let sanitizedTargetDir = targetDir;
+  if (process.platform === 'win32' && /^\/[a-zA-Z]:/.test(sanitizedTargetDir)) {
+    sanitizedTargetDir = sanitizedTargetDir.substring(1);
+  }
+
   for (const name of names) {
     const sourcePath = path.join(COMPONENTS_DIR, name, `${name}.tsx`);
-    const destinationPath = path.join(targetDir, `${name}.tsx`);
+    const destinationPath = path.join(sanitizedTargetDir, `${name}.tsx`);
     try {
-      await fs.mkdir(targetDir, { recursive: true });
+      await fs.mkdir(sanitizedTargetDir, { recursive: true });
       await fs.copyFile(sourcePath, destinationPath);
       loaded.push(name);
     } catch (error) {
-      console.error(`Failed to load component "${name}" to "${targetDir}":`, error);
+      console.error(`Failed to load component "${name}" to "${sanitizedTargetDir}":`, error);
       failed.push(name);
     }
   }

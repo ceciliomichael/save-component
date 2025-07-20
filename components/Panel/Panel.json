@@ -1,5 +1,5 @@
 {
   "name": "Panel",
-  "description": "The Panel component is a container that can be optionally resizable. You can control its minimum, maximum, and default size. The resizing can be horizontal or vertical. It's styled with the glassmorphism theme. Example: `<Panel isResizable defaultWidth={300}>Content</Panel>`",
-  "createdAt": "2025-07-20T09:35:20.635Z"
+  "description": "The Panel component is a container that can be optionally resizable. You can control its minimum, maximum, and default size. The resizing can be horizontal or vertical. It's styled with the glassmorphism theme.\n\n## Props\n- `children`: React nodes to be rendered inside the panel\n- `className`: Additional CSS classes to apply\n- `isResizable`: Boolean to enable/disable resizing (default: false)\n- `minWidth`: Minimum width/height in pixels (default: 200)\n- `maxWidth`: Maximum width/height in pixels (default: 600)\n- `defaultWidth`: Initial width/height in pixels (default: 300)\n- `direction`: \"horizontal\" or \"vertical\" resizing (default: \"horizontal\")\n- `motionProps`: Additional props for framer-motion\n\n## Example\n```tsx\n// Basic usage\n<Panel className=\"w-1/4 h-full\">Content</Panel>\n\n// Resizable panel\n<Panel \n  isResizable \n  minWidth={200}\n  maxWidth={500}\n  defaultWidth={300}\n>\n  Content\n</Panel>\n\n// Vertical resizing\n<Panel\n  isResizable\n  direction=\"vertical\"\n  minWidth={100}\n  maxWidth={400}\n  defaultWidth={200}\n>\n  Content\n</Panel>\n```",
+  "createdAt": "2025-07-20T10:17:10.654Z"
 }
