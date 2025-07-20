@@ -1,0 +1,5 @@
+{
+  "name": "MessageList",
+  "description": "The MessageList component is a scrollable container for displaying a series of messages, typically used in chat applications. It automatically scrolls to the most recent message. To use it, import the MessageList component and the Message type. Pass an array of Message objects to the `messages` prop. Each message object should have a unique `id`, a `sender` ('user' or 'ai'), the `message` content as a string, and an optional `timestamp`. The component will render the messages using the ChatBubble component internally. It can be customized with a `className` for additional styling.",
+  "createdAt": "2025-07-20T09:36:42.309Z"
+}

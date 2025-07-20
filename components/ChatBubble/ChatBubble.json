@@ -1,0 +1,5 @@
+{
+  "name": "ChatBubble",
+  "description": "The ChatBubble component is used to display a single message in a conversation. It distinguishes between 'user' and 'ai' senders with different styles. It supports markdown content, an optional timestamp, and a loading state. Example: `<ChatBubble sender=\"user\" message=\"Hello there!\" timestamp=\"10:30 AM\" />`",
+  "createdAt": "2025-07-20T09:35:28.756Z"
+}

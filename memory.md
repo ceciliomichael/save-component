@@ -17,7 +17,7 @@ This project implements an MCP (Model Context Protocol) server that allows AI to
 
 ### Tools Implemented
 1. `save_component` - Save a component with its code and usage description
-2. `list_components` - List all saved components
+2. `list_components` - List all saved components (without timestamps)
 3. `read_components` - Read one or more components by providing an array of component names
 
 ### Usage Instructions
@@ -39,6 +39,7 @@ Each component is stored as a JSON file with the following structure:
 ```
 
 ### Recent Updates
+- Modified the `list_components` tool to remove timestamps from the output
 - Simplified the tool interface by using only `read_components` for both single and multiple component reads
 - Updated the .cursorrules file to include a STEP 3 for component inventory
 - Created sample components (Button, Card) to demonstrate functionality

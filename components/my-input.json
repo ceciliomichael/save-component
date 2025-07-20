@@ -1,6 +1,0 @@
-{
-  "name": "my-input",
-  "code": "<input type=\"text\" placeholder=\"Enter text\" />",
-  "description": "A simple text input component.",
-  "createdAt": "2025-07-19T12:59:54.446Z"
-}

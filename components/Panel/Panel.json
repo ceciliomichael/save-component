@@ -1,0 +1,5 @@
+{
+  "name": "Panel",
+  "description": "The Panel component is a container that can be optionally resizable. You can control its minimum, maximum, and default size. The resizing can be horizontal or vertical. It's styled with the glassmorphism theme. Example: `<Panel isResizable defaultWidth={300}>Content</Panel>`",
+  "createdAt": "2025-07-20T09:35:20.635Z"
+}

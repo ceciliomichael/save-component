@@ -1,0 +1,5 @@
+{
+  "name": "Input",
+  "description": "The Input component is a themed text input field. It features the glassmorphism style and has styles for focus, placeholder, and disabled states. It accepts all standard input attributes. Example: `<Input placeholder=\"Enter your name\" />`",
+  "createdAt": "2025-07-20T09:35:40.903Z"
+}

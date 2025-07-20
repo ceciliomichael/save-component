@@ -1,6 +1,0 @@
-{
-  "name": "ThreePanelLayout",
-  "code": "\"use client\";\n\nimport LeftPanel from \"@/components/panels/left-panel\";\nimport MiddlePanel from \"@/components/panels/middle-panel\";\nimport RightPanel from \"@/components/panels/right-panel\";\n\nexport default function ThreePanelLayout() {\n  return (\n    <div className=\"flex h-screen w-full overflow-hidden\">\n      {/* Left Panel - 20% */}\n      <div className=\"w-[20%] p-2\">\n        <LeftPanel />\n      </div>\n      \n      {/* Middle Panel - 60% */}\n      <div className=\"w-[60%] p-2\">\n        <MiddlePanel />\n      </div>\n      \n      {/* Right Panel - 20% */}\n      <div className=\"w-[20%] p-2\">\n        <RightPanel />\n      </div>\n    </div>\n  );\n}",
-  "description": "A responsive three-panel layout component that divides the screen into left (20%), middle (60%), and right (20%) panels. Each panel is contained within its own div with proper padding and sizing.",
-  "createdAt": "2025-07-19T13:00:33.198Z"
-}

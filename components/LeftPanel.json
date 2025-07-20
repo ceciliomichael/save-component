@@ -1,6 +1,0 @@
-{
-  "name": "LeftPanel",
-  "code": "\"use client\";\n\nimport { LayoutGrid } from \"lucide-react\";\n\nexport default function LeftPanel() {\n  return (\n    <div className=\"h-full w-full bg-gray-100 p-4 rounded-lg shadow-sm flex flex-col\">\n      <div className=\"flex items-center gap-2 mb-4\">\n        <LayoutGrid className=\"w-5 h-5 text-blue-600\" />\n        <h2 className=\"font-semibold text-lg\">Left Panel</h2>\n      </div>\n      \n      <div className=\"flex-1 flex items-center justify-center\">\n        <p className=\"text-gray-500\">Left panel content (20% width)</p>\n      </div>\n    </div>\n  );\n}",
-  "description": "A left panel component with a light gray background, featuring a header with a LayoutGrid icon and a title. The content area is centered and takes up the remaining space.",
-  "createdAt": "2025-07-19T13:00:40.107Z"
-}

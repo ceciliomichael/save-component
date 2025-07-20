@@ -1,0 +1,5 @@
+{
+  "name": "Tooltip",
+  "description": "The Tooltip component provides a text label that appears when a user hovers over an element. The `content` prop holds the text to be displayed. The position can be set to 'top', 'bottom', 'left', or 'right'. An optional `delay` can be set for the appearance. Example: `<Tooltip content=\"This is a tooltip\"><Button>Hover Me</Button></Tooltip>`",
+  "createdAt": "2025-07-20T09:35:49.626Z"
+}

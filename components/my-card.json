@@ -1,6 +1,0 @@
-{
-  "name": "my-card",
-  "code": "<div class=\"card\">\n  <h2>Card Title</h2>\n  <p>Card content goes here.</p>\n</div>",
-  "description": "A simple card component with a title and content.",
-  "createdAt": "2025-07-19T12:59:57.930Z"
-}

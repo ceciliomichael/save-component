@@ -2,86 +2,94 @@ import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Get the directory of the current module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Define the components directory path
 const COMPONENTS_DIR = path.join(__dirname, '..', 'components');
 
-// Component interface
-export interface Component {
+export interface ComponentMeta {
   name: string;
-  code: string;
   description: string;
   createdAt: string;
 }
 
-// Ensure the components directory exists
-export async function ensureComponentsDir(): Promise<void> {
+export interface Component extends ComponentMeta {
+  code: string;
+}
+
+async function ensureComponentsDir(): Promise<void> {
   try {
     await fs.access(COMPONENTS_DIR);
-  } catch (error) {
+  } catch {
     await fs.mkdir(COMPONENTS_DIR, { recursive: true });
   }
 }
 
-// Save a component
 export async function saveComponent(name: string, code: string, description: string): Promise<Component> {
   await ensureComponentsDir();
   
-  const component: Component = {
+  const componentDir = path.join(COMPONENTS_DIR, name);
+  await fs.mkdir(componentDir, { recursive: true });
+
+  const codeFilePath = path.join(componentDir, `${name}.tsx`);
+  await fs.writeFile(codeFilePath, code, 'utf-8');
+
+  const meta: ComponentMeta = {
     name,
-    code,
     description,
     createdAt: new Date().toISOString(),
   };
-  
-  const filePath = path.join(COMPONENTS_DIR, `${name}.json`);
-  await fs.writeFile(filePath, JSON.stringify(component, null, 2), 'utf-8');
-  
-  return component;
+  const metaFilePath = path.join(componentDir, `${name}.json`);
+  await fs.writeFile(metaFilePath, JSON.stringify(meta, null, 2), 'utf-8');
+
+  return { ...meta, code };
 }
 
-// List all components
-export async function listComponents(): Promise<Component[]> {
+export async function listComponents(): Promise<string[]> {
   await ensureComponentsDir();
-  
-  const files = await fs.readdir(COMPONENTS_DIR);
-  const componentFiles = files.filter(file => file.endsWith('.json'));
-  
-  const components: Component[] = [];
-  
-  for (const file of componentFiles) {
-    const filePath = path.join(COMPONENTS_DIR, file);
-    const content = await fs.readFile(filePath, 'utf-8');
-    try {
-      const component = JSON.parse(content) as Component;
-      components.push(component);
-    } catch (error) {
-      console.error(`Error parsing component file ${file}:`, error);
-    }
-  }
-  
-  return components;
+  const entries = await fs.readdir(COMPONENTS_DIR, { withFileTypes: true });
+  return entries
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
 }
 
-// Read a specific component
-export async function readComponent(name: string): Promise<Component | null> {
-  await ensureComponentsDir();
-  
-  const filePath = path.join(COMPONENTS_DIR, `${name}.json`);
-  
+async function readComponent(name: string): Promise<Component | null> {
+  const componentDir = path.join(COMPONENTS_DIR, name);
   try {
-    const content = await fs.readFile(filePath, 'utf-8');
-    return JSON.parse(content) as Component;
+    const metaFilePath = path.join(componentDir, `${name}.json`);
+    const metaContent = await fs.readFile(metaFilePath, 'utf-8');
+    const meta = JSON.parse(metaContent) as ComponentMeta;
+
+    const codeFilePath = path.join(componentDir, `${name}.tsx`);
+    const code = await fs.readFile(codeFilePath, 'utf-8');
+
+    return { ...meta, code };
   } catch (error) {
+    console.error(`Failed to read component "${name}":`, error);
     return null;
   }
 }
 
-// Read multiple components
 export async function readComponents(names: string[]): Promise<(Component | null)[]> {
-  const components = await Promise.all(names.map(name => readComponent(name)));
-  return components;
+  return Promise.all(names.map(name => readComponent(name)));
+}
+
+export async function loadComponents(names: string[], targetDir: string): Promise<{ loaded: string[], failed: string[] }> {
+  await ensureComponentsDir();
+  const loaded: string[] = [];
+  const failed: string[] = [];
+
+  for (const name of names) {
+    const sourcePath = path.join(COMPONENTS_DIR, name, `${name}.tsx`);
+    const destinationPath = path.join(targetDir, `${name}.tsx`);
+    try {
+      await fs.mkdir(targetDir, { recursive: true });
+      await fs.copyFile(sourcePath, destinationPath);
+      loaded.push(name);
+    } catch (error) {
+      console.error(`Failed to load component "${name}" to "${targetDir}":`, error);
+      failed.push(name);
+    }
+  }
+  return { loaded, failed };
 } 
